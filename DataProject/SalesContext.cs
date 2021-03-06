@@ -33,6 +33,7 @@ namespace DataProject
             modelBuilder.HasDefaultSchema("db_datareader")
                 .HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
+           
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasKey("Id");
@@ -54,7 +55,7 @@ namespace DataProject
 
                 entity.Property(e => e.Phone).HasMaxLength(20);
             });
-
+           
             OnModelCreatingPartial(modelBuilder);
         }
 
