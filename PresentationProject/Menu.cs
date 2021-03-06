@@ -58,7 +58,7 @@ namespace PresentationProject
             while (string.IsNullOrEmpty(firstName) || string.IsNullOrWhiteSpace(firstName))
             {
                 Console.WriteLine("Please Enter A valid Input For FirstName(Cannot be empty)");
-                fname = Console.ReadLine();
+                firstName = Console.ReadLine();
             }
             Console.WriteLine("Last Name");
             lastName = Console.ReadLine();
