@@ -246,7 +246,7 @@ namespace PresentationProject
             {
                 Console.WriteLine("Search by First Character of lastName");
                 foreach (Customer c in CustomerData.Customers
-                    .Where(c => c.City.StartsWith(FilterType)))
+                    .Where(c => c.LastName.StartsWith(Filter.ToUpper())))
                 {
                     FilteredCusts.Add($"Last Name: {c.LastName} First Name: {c.FirstName} Phone: {c.Phone} City: {c.City} Country: {c.Country}");
                 }
