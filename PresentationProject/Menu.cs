@@ -38,6 +38,10 @@ namespace PresentationProject
             {
                 Delete();
             }
+            else if (choice == 5)
+            {
+                Filter();
+            }
             else if (choice == 6)
             {
                 ShowAllCustomers();
@@ -85,6 +89,17 @@ namespace PresentationProject
             Console.WriteLine("Enter the last name of the customer you want to find");
             string lastName = Console.ReadLine();
             foreach (string cust in CustCRUD.FindCust(lastName))
+            {
+                Console.WriteLine(cust);
+            }
+        }
+        public static void Filter()
+        {
+            Console.WriteLine("Please Enter Type of filter (C)ity, (L)astName, or Starting (CH)arcter of LastName \nOr leave blank to Find by lastName");
+            string Type = Console.ReadLine();
+            Console.WriteLine("Enter the filter parameter");
+            string Filter = Console.ReadLine();
+            foreach (var cust in CustCRUD.FilterCust(Type, Filter))
             {
                 Console.WriteLine(cust);
             }

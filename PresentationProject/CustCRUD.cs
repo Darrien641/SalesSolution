@@ -221,32 +221,39 @@ namespace PresentationProject
             return LastMatches;
         }
 
-        public static List<string> FilterCust(string Filter, string FilterChoice)
+        public static List<string> FilterCust(string FilterType, string Filter)
         {
             List<string> FilteredCusts = new List<string>();
-            if (Filter.ToUpper() == "L" || Filter.ToUpper() == "LASTNAME")
+            if (FilterType.ToUpper() == "L" || FilterType.ToUpper() == "LASTNAME")
             {
+                Console.WriteLine("Search By LastName:");
                 foreach (Customer c in CustomerData.Customers
-                    .Where(c => c.LastName.ToUpper() == FilterChoice.ToUpper()))
+                    .Where(c => c.LastName.ToUpper() == Filter.ToUpper()))
                 {
                     FilteredCusts.Add($"Last Name: {c.LastName} First Name: {c.FirstName} Phone: {c.Phone} City: {c.City} Country: {c.Country}");
                 }
             }
-            else if (Filter.ToUpper() == "C" || Filter.ToUpper() == "CITY")
+            else if (FilterType.ToUpper() == "C" || FilterType.ToUpper() == "CITY")
             {
+                Console.WriteLine("Search By city:");
                 foreach (Customer c in CustomerData.Customers
-                    .Where(c => c.City.ToUpper() == FilterChoice.ToUpper()))
+                    .Where(c => c.City.ToUpper() == Filter.ToUpper()))
                 {
                     FilteredCusts.Add($"Last Name: {c.LastName} First Name: {c.FirstName} Phone: {c.Phone} City: {c.City} Country: {c.Country}");
                 }
             }
-            else if (Filter.ToUpper() == "CH")
+            else if (FilterType.ToUpper() == "CH")
             {
+                Console.WriteLine("Search by First Character of lastName");
                 foreach (Customer c in CustomerData.Customers
-                    .Where(c => c.City.StartsWith(Filter)))
+                    .Where(c => c.City.StartsWith(FilterType)))
                 {
                     FilteredCusts.Add($"Last Name: {c.LastName} First Name: {c.FirstName} Phone: {c.Phone} City: {c.City} Country: {c.Country}");
                 }
+            }
+            else 
+            {
+                Console.WriteLine("No Matches found!");
             }
             return FilteredCusts;
         }
