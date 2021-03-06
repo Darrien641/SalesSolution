@@ -55,8 +55,18 @@ namespace PresentationProject
             Console.WriteLine("Input New Customer Info:");
             Console.WriteLine("First Name:");
             firstName = Console.ReadLine();
+            while (string.IsNullOrEmpty(firstName) || string.IsNullOrWhiteSpace(firstName))
+            {
+                Console.WriteLine("Please Enter A valid Input For FirstName(Cannot be empty)");
+                Console.ReadLine();
+            }
             Console.WriteLine("Last Name");
             lastName = Console.ReadLine();
+            while (string.IsNullOrEmpty(lastName) || string.IsNullOrWhiteSpace(lastName))
+            {
+                Console.WriteLine("Please Enter A valid Input For LastName(Cannot be empty)");
+                Console.ReadLine();
+            }
             Console.WriteLine("City");
             city = Console.ReadLine();
             Console.WriteLine("Country");
@@ -100,9 +110,16 @@ namespace PresentationProject
             string Type = Console.ReadLine();
             Console.WriteLine("Enter the filter parameter");
             string Filter = Console.ReadLine();
-            foreach (var cust in CustCRUD.FilterCust(Type, Filter))
+            if (string.IsNullOrWhiteSpace(Filter) || string.IsNullOrEmpty(Filter))
             {
-                Console.WriteLine(cust);
+                Find();
+            }
+            else
+            {
+                foreach (var cust in CustCRUD.FilterCust(Type, Filter))
+                {
+                    Console.WriteLine(cust);
+                }
             }
         }
         public static void ShowAllCustomers()
