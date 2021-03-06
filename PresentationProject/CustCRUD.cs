@@ -10,10 +10,10 @@ namespace PresentationProject
     class CustCRUD
     {
         static SalesContext CustomerData = new SalesContext();
-        
+        static List<string> CustData = new List<string>();
         public static List<string> GetAllCustomers()
         {
-            List<string> CustData = new List<string>();
+            
             foreach (Customer c in CustomerData.Customers)
             {
                 CustData.Add($"Last Name: {c.LastName} First Name: {c.FirstName} Phone: {c.Phone} City: {c.City} Country: {c.Country}");
