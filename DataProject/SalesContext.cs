@@ -37,9 +37,7 @@ namespace DataProject
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasKey("Id");
-                entity.ToTable("Customer", "dbo");
-
-                
+                entity.ToTable("Customer");
 
                 entity.Property(e => e.City).HasMaxLength(40);
 
