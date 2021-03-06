@@ -39,7 +39,7 @@ namespace DataProject
                 entity.HasKey("Id");
                 entity.ToTable("Customer", "dbo");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                
 
                 entity.Property(e => e.City).HasMaxLength(40);
 
