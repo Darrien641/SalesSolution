@@ -216,14 +216,39 @@ namespace PresentationProject
             List<string> LastMatches = new List<string>();
             foreach (Customer c in CustomerData.Customers.Where(c => c.LastName.ToUpper() == lastName.ToUpper()))
             {
-                LastMatches.Add($"Last Name: {c.LastName} First Name: {c.FirstName} Phone: {c.Phone} City: {c.City} Country: {c.Country}"); ;
+                LastMatches.Add($"Last Name: {c.LastName} First Name: {c.FirstName} Phone: {c.Phone} City: {c.City} Country: {c.Country}");
             }
             return LastMatches;
         }
 
-        public static void FilterCust()
+        public static List<string> FilterCust(string Filter, string FilterChoice)
         {
-
+            List<string> FilteredCusts = new List<string>();
+            if (Filter.ToUpper() == "L" || Filter.ToUpper() == "LASTNAME")
+            {
+                foreach (Customer c in CustomerData.Customers
+                    .Where(c => c.LastName.ToUpper() == FilterChoice.ToUpper()))
+                {
+                    FilteredCusts.Add($"Last Name: {c.LastName} First Name: {c.FirstName} Phone: {c.Phone} City: {c.City} Country: {c.Country}");
+                }
+            }
+            else if (Filter.ToUpper() == "C" || Filter.ToUpper() == "CITY")
+            {
+                foreach (Customer c in CustomerData.Customers
+                    .Where(c => c.City.ToUpper() == FilterChoice.ToUpper()))
+                {
+                    FilteredCusts.Add($"Last Name: {c.LastName} First Name: {c.FirstName} Phone: {c.Phone} City: {c.City} Country: {c.Country}");
+                }
+            }
+            else if (Filter.ToUpper() == "CH")
+            {
+                foreach (Customer c in CustomerData.Customers
+                    .Where(c => c.City.StartsWith(Filter)))
+                {
+                    FilteredCusts.Add($"Last Name: {c.LastName} First Name: {c.FirstName} Phone: {c.Phone} City: {c.City} Country: {c.Country}");
+                }
+            }
+            return FilteredCusts;
         }
 
 
